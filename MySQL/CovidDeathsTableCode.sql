@@ -29,7 +29,7 @@ weekly_icu_admissions_per_million FLOAT,
 weekly_hosp_admissions INT,
 weekly_hosp_admissions_per_million FLOAT);
 
--- Loading Data From Comma-Delineated File (csv) Into covviddeaths Table
+-- Loading Data From Comma-Delineated File (csv) Into coviddeaths Table
 
 LOAD DATA
 	LOCAL INFILE "C:/Users/Stitcher's_PC/Documents/Code/Projects/SQL/CovidDeaths.csv"
