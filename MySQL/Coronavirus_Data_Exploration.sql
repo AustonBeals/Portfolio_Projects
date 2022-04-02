@@ -54,10 +54,10 @@ MAX((total_deaths/population))*100 AS death_rate
 FROM coronavirus.coviddeaths
 WHERE continent IS NOT NULL
 AND location NOT LIKE '%income%'
-GROUP BY location
+GROUP BY location, population
 ORDER BY 4 DESC;
 
--- Same as the above Query but changed to be based on Continent
+-- Same as the above query but changed to be based on Continent
 
 SELECT location, population, MAX(total_deaths) AS highest_death_count,
 MAX((total_deaths/population))*100 AS death_rate
@@ -65,7 +65,7 @@ FROM coronavirus.coviddeaths
 WHERE continent IS NULL
 AND location NOT LIKE '%income%'
 AND location NOT IN ('World', 'European Union', 'International')
-GROUP BY location
+GROUP BY location, population
 ORDER BY 4 DESC;
 
 -- Same as the above Query but based on Infection Rate
@@ -76,7 +76,7 @@ FROM coronavirus.coviddeaths
 WHERE continent IS NOT NULL
 AND location NOT LIKE '%income%'
 AND location NOT IN ('World', 'European Union', 'International')
-GROUP BY location
+GROUP BY location, population
 ORDER BY 4 DESC;
 
 -- Global Death Statistics
