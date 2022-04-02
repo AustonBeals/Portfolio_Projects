@@ -99,20 +99,12 @@ FROM NashvillePortfolio.dbo.nashvillehousing;
 
 ALTER TABLE nashvillehousing
 ADD OwnerSplitAddress NVARCHAR(255);
-
-Update nashvillehousing
-SET OwnerSplitAddress = PARSENAME(REPLACE(OwnerAddress,',','.'), 3);
-
-ALTER TABLE nashvillehousing
-ADD OwnerSplitCity NVARCHAR(255);
-
-Update nashvillehousing
-SET OwnerSplitCity = PARSENAME(REPLACE(OwnerAddress,',','.'), 2);
-
-ALTER TABLE nashvillehousing
+ADD OwnerSPlitCity NVARCHAR(255);
 ADD OwnerSplitState NVARCHAR(255);
 
 Update nashvillehousing
+SET OwnerSplitAddress = PARSENAME(REPLACE(OwnerAddress,',','.'), 3);
+SET OwnerSplitCity = PARSENAME(REPLACE(OwnerAddress,',','.'), 2);
 SET OwnerSplitState = PARSENAME(REPLACE(OwnerAddress,',','.'), 1);
 
 SELECT OwnerSplitAddress, OwnerSplitCity, OwnerSplitState
@@ -146,7 +138,7 @@ END;
 
 --------------------------------------------------------------------------------------------------
 
--- Remove Duplicates
+-- Remove Duplicates via a CTE
 
 WITH  RowNumCTE AS(
 SELECT *,
